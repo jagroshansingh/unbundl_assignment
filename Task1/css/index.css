@@ -1,0 +1,8 @@
+#ProductContainer{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+}
+#ProductContainer>div{
+    border:1px solid;
+    text-align: center;
+}

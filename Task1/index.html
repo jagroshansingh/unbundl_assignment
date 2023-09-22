@@ -1,11 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
+  <body>
+    <div id="ProductContainer"></div>
+  </body>
+  <script>
+    let chocolateList = [
+      {
+        id: 1,
+        name: "Dark Chocolate Bar",
+        description:
+          "A rich and indulgent dark chocolate bar with 70% cocoa content.",
+        price: 199.99,
+        weight: "100g",
+        image:
+          "https://cococart.in/cdn/shop/products/1CH0257_280x.jpg?v=1659950748",
+      },
+      {
+        id: 2,
+        name: "Milk Chocolate Assortment",
+        description:
+          "A delightful assortment of creamy milk chocolates in various flavors.",
+        price: 349.99,
+        weight: "150g",
+        image:
+          "https://cococart.in/cdn/shop/products/1CH0877_280x.png?v=1659949373",
+      },
+      {
+        id: 3,
+        name: "White Chocolate Truffles",
+        description:
+          "Smooth and velvety white chocolate truffles with a hint of vanilla.",
+        price: 259.99,
+        weight: "120g",
+        image:
+          "https://cococart.in/cdn/shop/products/eecc9af4-38e3-4691-a3ec-f52e66d776c8_280x.jpg?v=1659949392",
+      },
+      {
+        id: 4,
+        name: "Hazelnut Chocolate Spread",
+        description:
+          "Creamy hazelnut chocolate spread for spreading on toast or pancakes.",
+        price: 499.99,
+        weight: "250g",
+        image:
+          "https://cococart.in/cdn/shop/products/1CH0880_280x.png?v=1659949371",
+      },
+      {
+        id: 5,
+        name: "Dark Chocolate Covered Almonds",
+        description: "Crunchy roasted almonds coated in rich dark chocolate.",
+        price: 299.99,
+        weight: "200g",
+        image:
+          "https://cococart.in/cdn/shop/files/1CH1331_280x.jpg?v=1693485077",
+      },
+      {
+        id: 6,
+        name: "Mint Chocolate Truffles",
+        description: "Cool and refreshing mint-infused chocolate truffles.",
+        price: 429.99,
+        weight: "120g",
+        image:
+          "https://cococart.in/cdn/shop/products/pngfile-02_280x.png?v=1659950213",
+      },
+      {
+        id: 7,
+        name: "Caramel-filled Chocolate Squares",
+        description: "Decadent chocolate squares with a gooey caramel center.",
+        price: 399.99,
+        weight: "150g",
+        image:
+          "https://cococart.in/cdn/shop/products/Milkabrokenhazelnutmilkbar100g-01_280x.jpg?v=1659950815",
+      },
+      {
+        id: 8,
+        name: "Fruit and Nut Chocolate Bark",
+        description:
+          "A delightful blend of dried fruits and nuts in milk chocolate.",
+        price: 449.99,
+        weight: "180g",
+        image:
+          "https://cococart.in/cdn/shop/products/1CH0890_3b0e05e7-879a-4c8c-914c-05ed8ec5d924_280x.png?v=1659949690",
+      },
+      {
+        id: 9,
+        name: "Sea Salt Caramel Dark Chocolate",
+        description:
+          "The perfect balance of sea salt and caramel in dark chocolate.",
+        price: 479.99,
+        weight: "120g",
+        image:
+          "https://cococart.in/cdn/shop/products/IMG_2882_f779c98b-6468-405f-94a1-afef515d01b7_280x.jpg?v=1659950252",
+      },
+      {
+        id: 10,
+        name: "Organic Raw Cacao Nibs",
+        description:
+          "Pure and unprocessed cacao nibs for a healthy snack or ingredient.",
+        price: 699.99,
+        weight: "200g",
+        image:
+          "https://cococart.in/cdn/shop/products/1CH0733_bbdd5349-a647-4a1b-82b4-c634b35e5cf8_280x.png?v=1659949816",
+      },
+    ];
+    let collection =
+      JSON.parse(sessionStorage.getItem("ChocolateCollection")) || [];
+
+    let productContainer = document.getElementById("ProductContainer");
+    chocolateList.forEach((chocolate) => {
+      let img = document.createElement("img");
+      let btn = document.createElement("button");
+      let div = document.createElement("div");
+      let price = document.createElement("h4");
+      let name=document.createElement('p')
+
+      btn.innerText = "Add to Collection";
+      img.src = chocolate.image;
+      price.innerText = "₹" + chocolate.price;
+      name.innerText=chocolate.name
+
+      btn.addEventListener("click", () => {
+        if (collection.length < 9) {
+          collection.push(chocolate);
+          sessionStorage.setItem(
+            "ChocolateCollection",
+            JSON.stringify(collection)
+          );
+        }
+      });
+
+      div.append(img,name,price,btn);
+      productContainer.append(div);
+    });
+  </script>
 </html>
