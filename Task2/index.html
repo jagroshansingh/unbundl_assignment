@@ -5,14 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="./css/index.css" />
+    <script src="https://kit.fontawesome.com/81ff3434ff.js" crossorigin="anonymous">
+        document.querySelector("#nav_cat>div").addEventListener("hover")
+    </script>
   </head>
   <body>
     <div id="navbar">
       <div>
+        <i class="fa-solid fa-bars" id="hamburgerMenu"></i>
         <p>Ship Now</p>
         <p>Health Experts</p>
-        <p>Naked Way</p>
-        <p>Nāck Journals</p>
+        <p>Naked Way <i class="fa-solid fa-chevron-down"></i></p>
+        <p>Nāck Journals <i class="fa-solid fa-chevron-down"></i></p>
       </div>
       <div>
         <img
@@ -22,16 +26,19 @@
       </div>
       <div>
         <p>About Us</p>
-        <img src="" alt="profile" />
-        <img src="" alt="cart" />
+        <i class="fa-regular fa-user"></i>
+        <i class="fa-solid fa-cart-shopping"></i>
       </div>
     </div>
+
     <div id="mainCarousalContainer"></div>
-    <div>
+    <div id="tagLine">
       <h4>HONEST. CLEAN. NATURAL.</h4>
-      <p>Choose Your Favourite</p>
+      <h1>Choose Your Favourite</h1>
     </div>
+
     <div id="secondCarousalContainer"></div>
+
     <div id="middleBody">
       <div style="grid-area: first">
         <h5>EAA+ELECTROLYTES</h5>
@@ -114,6 +121,7 @@
         />
       </div>
     </div>
+    
   </body>
 
 
@@ -134,6 +142,18 @@
 
     firstCarousal();
     secondCarousal();
+
+    window.addEventListener('scroll',()=>{
+        let nav=document.getElementById('navbar')
+        if(window.scrollY>20) 
+        {
+            nav.style.backgroundColor='black'
+        }
+        else
+        {
+            nav.style.backgroundColor='transparent'
+        }
+    })
 
     function firstCarousal() {
       let mainCarousalContainer = document.querySelector(
