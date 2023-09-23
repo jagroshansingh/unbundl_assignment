@@ -1,20 +1,42 @@
+body{
+    margin: 0;
+}
+
 #Navbar{
     height: 8vh;
-    border: 1px solid;
+    /* border: 1px solid; */
     display: flex;
     background-color: rgb(123, 215, 215);
 }
 
 #ProductContainer{
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(5,1fr);
+    gap: 1%;
+    padding: 2%;
+    line-height: 5px;
 }
 #ProductContainer>div{
-    border:1px solid;
+    /* border:1px solid; */
     text-align: center;
+    border-radius: 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 #ProductContainer img{
     width: 100%;
+    border-radius: 20px;
+}
+#ProductContainer button{
+    width: 100%;
+    border-radius: 20px;
+    height: 30px;
+    background-color: blue;
+    color: white;
+    font-weight: bolder;
+}
+#ProductContainer button:hover{
+    cursor: pointer;
+    background-color: blueviolet;
 }
 
 /* for medium screens*/

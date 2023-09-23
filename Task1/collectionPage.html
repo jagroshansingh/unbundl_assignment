@@ -63,6 +63,7 @@
       let newpack = combination.filter((el, i) => el.id != chocolate.id);
       sessionStorage.setItem("ChocolateCollection", JSON.stringify(newpack));
       renderList();
+      totalPrice();
     }
   </script>
 </html>
