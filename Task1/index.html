@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="./css/index.css" />
   </head>
   <body>
+    <div id="Navbar">
+      <a href="./index.html"
+        ><img
+          src="https://unbundl.com/wp-content/uploads/2022/10/nav-logo-1.svg"
+          alt="logo"
+      /></a>
+      <a href="./collectionPage.html"><img src="" alt="bag" /></a>
+      <h3 id="collectionCount"></h3>
+    </div>
     <div id="ProductContainer"></div>
   </body>
   <script>
@@ -111,6 +120,7 @@
     ];
     let collection =
       JSON.parse(sessionStorage.getItem("ChocolateCollection")) || [];
+    let count = document.getElementById("collectionCount");
 
     let productContainer = document.getElementById("ProductContainer");
     chocolateList.forEach((chocolate) => {
@@ -118,25 +128,28 @@
       let btn = document.createElement("button");
       let div = document.createElement("div");
       let price = document.createElement("h4");
-      let name=document.createElement('p')
+      let name = document.createElement("p");
 
       btn.innerText = "Add to Collection";
       img.src = chocolate.image;
       price.innerText = "₹" + chocolate.price;
-      name.innerText=chocolate.name
+      name.innerText = chocolate.name;
 
       btn.addEventListener("click", () => {
-        if (collection.length < 9) {
+        if (collection.length < 8) {
           collection.push(chocolate);
           sessionStorage.setItem(
             "ChocolateCollection",
             JSON.stringify(collection)
           );
         }
+        count.innerText = collection.length;
       });
 
-      div.append(img,name,price,btn);
+      div.append(img, name, price, btn);
       productContainer.append(div);
     });
+
+    count.innerText = collection.length;
   </script>
 </html>

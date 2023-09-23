@@ -1,3 +1,10 @@
+#Navbar{
+    height: 8vh;
+    border: 1px solid;
+    display: flex;
+    background-color: rgb(123, 215, 215);
+}
+
 #ProductContainer{
     display: grid;
     grid-template-columns: repeat(4,1fr);
@@ -5,4 +12,19 @@
 #ProductContainer>div{
     border:1px solid;
     text-align: center;
+}
+#ProductContainer img{
+    width: 100%;
+}
+
+@media screen and (max-width:700px){
+    #ProductContainer{
+        grid-template-columns: repeat(3,1fr);
+    }
+}
+
+@media screen and (max-width:400px){
+    #ProductContainer{
+        grid-template-columns: repeat(2,1fr);
+    }
 }

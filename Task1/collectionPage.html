@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="collectionContainer"></div>
+  </body>
+  <script>
+    let container = document.getElementById("collectionContainer");
+    let ss =
+      JSON.parse(sessionStorage.getItem("ChocolateCollection")) || [];
+    if (ss.length == 0) {
+        let h2=document.createElement('h2')
+        h2.innerText='No item present'
+        container.append(h2)
+    } else {
+      ss.forEach((chocolate) => {
+        let img = document.createElement("img");
+        let btn = document.createElement("button");
+        let div = document.createElement("div");
+        let price = document.createElement("h4");
+        let name = document.createElement("p");
+
+        btn.innerText = "Add to Collection";
+        img.src = chocolate.image;
+        price.innerText = "₹" + chocolate.price;
+        name.innerText = chocolate.name;
+
+        // btn.addEventListener("click", () => {
+        //   if (collection.length < 9) {
+        //     collection.push(chocolate);
+        //     sessionStorage.setItem(
+        //       "ChocolateCollection",
+        //       JSON.stringify(collection)
+        //     );
+        //   }
+        // });
+
+        div.append(img, name, price, btn);
+        container.append(div);
+      });
+    }
+  </script>
+</html>
