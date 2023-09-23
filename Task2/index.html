@@ -5,15 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="./css/index.css" />
-    <script src="https://kit.fontawesome.com/81ff3434ff.js" crossorigin="anonymous">
-        document.querySelector("#nav_cat>div").addEventListener("hover")
+    <script
+      src="https://kit.fontawesome.com/81ff3434ff.js"
+      crossorigin="anonymous"
+    >
+      document.querySelector("#nav_cat>div").addEventListener("hover")
     </script>
   </head>
   <body>
     <div id="navbar">
       <div>
         <i class="fa-solid fa-bars" id="hamburgerMenu"></i>
-        <p>Ship Now</p>
+        <p>Shop Now</p>
         <p>Health Experts</p>
         <p>Naked Way <i class="fa-solid fa-chevron-down"></i></p>
         <p>Nāck Journals <i class="fa-solid fa-chevron-down"></i></p>
@@ -121,15 +124,19 @@
         />
       </div>
     </div>
-    
   </body>
-
 
   <script>
     let mainCarousalImages = [
       "https://nack.life/cdn/shop/files/desktopcover_1280x.jpg?v=1695204317",
       "https://nack.life/cdn/shop/files/desktopbanner_1280x.jpg?v=1692342864",
       "https://nack.life/cdn/shop/files/Carousel_Web_Banner_img-01_1280x.jpg?v=1684483241",
+    ];
+
+    let mainCarousalPotraitImages = [
+      "https://nack.life/cdn/shop/files/Carousel_Web_Banner_img-02_780x.jpg?v=1684483260",
+      "https://nack.life/cdn/shop/files/mobilebanner_780x.jpg?v=1692343446",
+      "https://nack.life/cdn/shop/files/mobilecover_1_780x.jpg?v=1695204372",
     ];
 
     let secondCarousalImages = [
@@ -140,32 +147,41 @@
       "https://nack.life/cdn/shop/files/tsk_home_page_1_410x.jpg?v=1680075128",
     ];
 
-    firstCarousal();
+    let intervalRef
+    firstCarousal(mainCarousalImages)
     secondCarousal();
 
-    window.addEventListener('scroll',()=>{
-        let nav=document.getElementById('navbar')
-        if(window.scrollY>20) 
-        {
-            nav.style.backgroundColor='black'
-        }
-        else
-        {
-            nav.style.backgroundColor='transparent'
-        }
-    })
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 766) {
+        firstCarousal(mainCarousalImages);
+      } else {
+        firstCarousal(mainCarousalPotraitImages)
+      }
+    });
 
-    function firstCarousal() {
+    window.addEventListener("scroll", () => {
+      let nav = document.getElementById("navbar");
+      if (window.scrollY > 20) {
+        nav.style.backgroundColor = "black";
+      } else {
+        nav.style.backgroundColor = "transparent";
+      }
+    });
+
+    
+    function firstCarousal(firstImages) {
       let mainCarousalContainer = document.querySelector(
         "#mainCarousalContainer"
       );
+      mainCarousalContainer.innerHTML=""
       let image = document.createElement("img");
-      image.src = mainCarousalImages[0];
+      image.src = firstImages[0];
       mainCarousalContainer.append(image);
       let i = 0;
-      setInterval(() => {
+      clearInterval(intervalRef)
+      intervalRef=setInterval(() => {
         i++;
-        image.src = mainCarousalImages[i];
+        image.src = firstImages[i];
         mainCarousalContainer.append(image);
         if (i == 2) i = 0;
       }, 5000);
@@ -175,13 +191,19 @@
       let secondCarousalContainer = document.querySelector(
         "#secondCarousalContainer"
       );
+      let div0 = document.createElement("div");
+      let div1 = document.createElement("div");
+      let div2 = document.createElement("div");
       let img0 = document.createElement("img");
-      img0.src = secondCarousalImages[0];
       let img1 = document.createElement("img");
-      img1.src = secondCarousalImages[1];
       let img2 = document.createElement("img");
+      img0.src = secondCarousalImages[0];
+      img1.src = secondCarousalImages[1];
       img2.src = secondCarousalImages[2];
-      secondCarousalContainer.append(img0, img1, img2);
+      div0.append(img0);
+      div1.append(img1);
+      div2.append(img2);
+      secondCarousalContainer.append(div0, div1, div2);
       let j = 0;
       setInterval(() => {
         j++;

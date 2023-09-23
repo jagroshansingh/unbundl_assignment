@@ -1,13 +1,9 @@
-*{
-    /* border: 1px solid; */
-}
-
 body{
     margin: 0;
 }
 
-#navbar *{
-    /* border: 1px solid ; */
+#navbar>div *:hover{
+    cursor: pointer;
 }
 
 #navbar{
@@ -56,7 +52,7 @@ body{
     justify-content: center;
 }
 
-#secondCarousalContainer>img{
+#secondCarousalContainer img{
     width: 100%;
 }
 
