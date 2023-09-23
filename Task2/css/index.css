@@ -28,3 +28,52 @@ body{
     display: flex;
     justify-content: center;
 }
+
+#secondCarousalContainer>img{
+    width: 100%;
+}
+
+/* 766px
+566px */
+#middleBody{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding: 0px 10%;
+    align-items: center;
+    grid-template-areas:
+    "first first-image"
+    "second-image second"
+    "third third-image"
+    "fourth-image fourth"
+    "fifth fifth-image"
+    ;
+}
+
+#middleBody img{
+    width: 100%;
+}
+
+.readMore{
+    background-color: orange;
+    display: inline;
+    padding: 1% 2%;
+}
+
+@media screen and (max-width:566px){
+    #middleBody{
+        grid-template-columns: 100%;
+        grid-template-areas: 
+        "first-image"
+        "first"
+        "second-image"
+        "second"
+        "third-image"
+        "third"
+        "fourth-image"
+        "fourth"
+        "fifth-image"
+        "fifth"
+        ;
+        padding: 0px 5%;
+    }
+}
