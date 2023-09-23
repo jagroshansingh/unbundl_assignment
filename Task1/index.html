@@ -129,6 +129,7 @@
           "https://cococart.in/cdn/shop/products/1CH0733_bbdd5349-a647-4a1b-82b4-c634b35e5cf8_280x.png?v=1659949816",
       },
     ];
+    
     let collection =
       JSON.parse(sessionStorage.getItem("ChocolateCollection")) || [];
     let count = document.getElementById("collectionCount");
@@ -159,7 +160,7 @@
     function addToCollection(chocolate) {
       let flag = false;
       if (collection.length < 8) {
-        for (let i = 0; i < collection.length; i++) {
+        for (let i = 0; i < collection.length; i++) {                      //for checking if the item is already present or not
           if (collection[i].id == chocolate.id) flag = true;
         }
 
