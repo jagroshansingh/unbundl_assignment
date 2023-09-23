@@ -7,6 +7,8 @@ body{
     /* border: 1px solid; */
     display: flex;
     background-color: rgb(123, 215, 215);
+    position: sticky;
+    top: 0px;
 }
 
 #ProductContainer{

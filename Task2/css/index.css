@@ -1,0 +1,25 @@
+*{
+    border: 1px solid;
+}
+
+body{
+    margin: 0;
+}
+
+#navbar{
+    display: flex;
+    justify-content: space-between;
+    background-color: aqua;
+    position: fixed;
+    width: 100%;
+    background-color: transparent;
+    top:0px
+}
+
+#navbar>div{
+    display: flex;
+}
+
+#mainCarousalContainer>img{
+    width: 100%;
+}
