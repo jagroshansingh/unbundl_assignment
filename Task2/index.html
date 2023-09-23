@@ -48,22 +48,44 @@
       "https://nack.life/cdn/shop/files/tsk_home_page_1_410x.jpg?v=1680075128",
     ];
 
-    let mainCarousalContainer = document.querySelector(
-      "#mainCarousalContainer"
-    );
-    let secondCarousalContainer = document.querySelector(
-      "#secondCarousalContainer"
-    );
+    firstCarousal();
+    secondCarousal();
 
-    let image = document.createElement("img");
-    image.src = mainCarousalImages[0];
-    mainCarousalContainer.append(image);
-    let i = 0;
-    setInterval(() => {
-      i++;
-      image.src = mainCarousalImages[i];
+    function firstCarousal() {
+      let mainCarousalContainer = document.querySelector(
+        "#mainCarousalContainer"
+      );
+      let image = document.createElement("img");
+      image.src = mainCarousalImages[0];
       mainCarousalContainer.append(image);
-      if (i == 2) i = 0;
-    }, 4000);
+      let i = 0;
+      setInterval(() => {
+        i++;
+        image.src = mainCarousalImages[i];
+        mainCarousalContainer.append(image);
+        if (i == 2) i = 0;
+      }, 5000);
+    }
+
+    function secondCarousal() {
+      let secondCarousalContainer = document.querySelector(
+        "#secondCarousalContainer"
+      );
+      let img0 = document.createElement("img");
+      img0.src = secondCarousalImages[0];
+      let img1 = document.createElement("img");
+      img1.src = secondCarousalImages[1];
+      let img2 = document.createElement("img");
+      img2.src = secondCarousalImages[2];
+      secondCarousalContainer.append(img0, img1, img2);
+      let j = 0;
+      setInterval(() => {
+        j++;
+        img0.src = secondCarousalImages[j];
+        img1.src = secondCarousalImages[(j + 1) % 5];
+        img2.src = secondCarousalImages[(j + 2) % 5];
+        if (j == 4) j = 0;
+      }, 4000);
+    }
   </script>
 </html>

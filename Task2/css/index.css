@@ -23,3 +23,8 @@ body{
 #mainCarousalContainer>img{
     width: 100%;
 }
+
+#secondCarousalContainer{
+    display: flex;
+    justify-content: center;
+}
