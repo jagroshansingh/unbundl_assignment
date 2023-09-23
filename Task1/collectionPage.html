@@ -4,44 +4,65 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="./css/collectionPage.css" />
   </head>
   <body>
+    <h2>Total Price: <span id="totalPrice"></span></h2>
     <div id="collectionContainer"></div>
   </body>
   <script>
     let container = document.getElementById("collectionContainer");
-    let ss =
+    let combination =
       JSON.parse(sessionStorage.getItem("ChocolateCollection")) || [];
-    if (ss.length == 0) {
-        let h2=document.createElement('h2')
-        h2.innerText='No item present'
-        container.append(h2)
-    } else {
-      ss.forEach((chocolate) => {
-        let img = document.createElement("img");
-        let btn = document.createElement("button");
-        let div = document.createElement("div");
-        let price = document.createElement("h4");
-        let name = document.createElement("p");
+    console.log(combination);
+    renderList();
+    totalPrice();
 
-        btn.innerText = "Add to Collection";
-        img.src = chocolate.image;
-        price.innerText = "₹" + chocolate.price;
-        name.innerText = chocolate.name;
+    function renderList() {
+      combination =
+        JSON.parse(sessionStorage.getItem("ChocolateCollection")) || [];
+      container.innerHTML = "";
 
-        // btn.addEventListener("click", () => {
-        //   if (collection.length < 9) {
-        //     collection.push(chocolate);
-        //     sessionStorage.setItem(
-        //       "ChocolateCollection",
-        //       JSON.stringify(collection)
-        //     );
-        //   }
-        // });
+      if (combination.length == 0) {
+        let h2 = document.createElement("h2");
+        h2.innerText = "No item present";
+        container.append(h2);
+      } else {
+        combination.forEach((chocolate) => {
+          let img = document.createElement("img");
+          let btn = document.createElement("button");
+          let div = document.createElement("div");
+          let price = document.createElement("h4");
+          let name = document.createElement("p");
 
-        div.append(img, name, price, btn);
-        container.append(div);
-      });
+          btn.innerText = "Delete";
+          img.src = chocolate.image;
+          price.innerText = "₹" + chocolate.price;
+          name.innerText = chocolate.name;
+
+          btn.addEventListener("click", () => removeItem(chocolate));
+
+          div.append(img, name, price, btn);
+          container.append(div);
+        });
+      }
+    }
+
+    function totalPrice() {
+      let total = document.getElementById("totalPrice");
+      let sum = combination.reduce(
+        (accumulator, each) => accumulator + each.price,
+        0
+      );
+      total.innerHTML = "";
+      total.append("₹ " + sum);
+      console.log(sum);
+    }
+
+    function removeItem(chocolate) {
+      let newpack = combination.filter((el, i) => el.id != chocolate.id);
+      sessionStorage.setItem("ChocolateCollection", JSON.stringify(newpack));
+      renderList();
     }
   </script>
 </html>

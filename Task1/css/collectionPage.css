@@ -1,32 +1,28 @@
-#Navbar{
-    height: 8vh;
-    border: 1px solid;
-    display: flex;
-    background-color: rgb(123, 215, 215);
+#collectionContainer{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
 }
 
-#ProductContainer{
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-}
-#ProductContainer>div{
+#collectionContainer>div{
     border:1px solid;
     text-align: center;
 }
-#ProductContainer img{
+
+#collectionContainer img{
     width: 100%;
 }
 
+
 /* for medium screens*/
 @media screen and (max-width:700px){
-    #ProductContainer{
+    #collectionContainer{
         grid-template-columns: repeat(3,1fr);
     }
 }
 
 /*for small screens*/
 @media screen and (max-width:400px){
-    #ProductContainer{
+    #collectionContainer{
         grid-template-columns: repeat(2,1fr);
     }
 }
