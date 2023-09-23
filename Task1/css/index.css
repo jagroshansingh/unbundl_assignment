@@ -3,12 +3,14 @@ body{
 }
 
 #Navbar{
-    height: 8vh;
+    height: 12vh;
     /* border: 1px solid; */
     display: flex;
     background-color: rgb(123, 215, 215);
     position: sticky;
     top: 0px;
+    justify-content: space-between;
+    padding: 0% 2%;
 }
 
 #ProductContainer{
@@ -39,6 +41,16 @@ body{
 #ProductContainer button:hover{
     cursor: pointer;
     background-color: blueviolet;
+}
+
+#bagIcon{
+    display: flex;
+    align-items: center;
+}
+
+#collectionCount{
+    background-color: red;
+    border-radius: 50%;
 }
 
 /* for medium screens*/
